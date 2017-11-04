@@ -16,6 +16,10 @@ for creating the project, and
 
 > mvn package 
 
-for building the target JAR file
+for building the target JAR file, and
+
+> hadoop-submit -class "RadomForestRegression" rbda-movie-1.0-SNAPSHOT.jar
+
+for running the Spark task
 
 
