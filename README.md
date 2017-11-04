@@ -9,17 +9,16 @@ Data source: [Kaggle TMDB 5000](https://www.kaggle.com/tmdb/tmdb-movie-metadata/
 
 **Apache Maven** 3.2.1
 
-We used maven to build the project package:
+To create the Maven project package: 
 > mvn archetype:generate 
 
-for creating the project, and
+To build the Maven project: 
 
 > mvn package 
 
-for building the target JAR file, and
+To run the task on Spark: 
 
 > spark-submit --class "RandomForestRegression" rbda-movie-1.0-SNAPSHOT.jar
 
-for running the Spark task
-
+Remember to put the input TXT file in HDFS
 
