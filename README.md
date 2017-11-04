@@ -12,7 +12,7 @@ Data source: [Kaggle TMDB 5000](https://www.kaggle.com/tmdb/tmdb-movie-metadata/
 We used maven to build the project package:
 > mvn archetype:generate 
 
-for creating the project, and
+for building the project, and
 
 > mvn package 
 
