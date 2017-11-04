@@ -20,5 +20,5 @@ To run the task on Spark:
 
 > spark-submit --class "RandomForestRegression" rbda-movie-1.0-SNAPSHOT.jar
 
-
+Remember to put the input TXT file in HDFS
 
