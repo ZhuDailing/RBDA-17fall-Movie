@@ -18,7 +18,7 @@ for creating the project, and
 
 for building the target JAR file, and
 
-> spark-submit --class "RadomForestRegression" rbda-movie-1.0-SNAPSHOT.jar
+> spark-submit --class "RandomForestRegression" rbda-movie-1.0-SNAPSHOT.jar
 
 for running the Spark task
 
