@@ -11,7 +11,7 @@ Data source: [Kaggle TMDB 5000](https://www.kaggle.com/tmdb/tmdb-movie-metadata/
 
 ---
 
-# Load data to HDFS
+## Load data to HDFS
 
 ```language=bash
 hdfs dfs -mkdir hiveInput
