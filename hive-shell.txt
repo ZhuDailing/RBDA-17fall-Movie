@@ -1,0 +1,84 @@
+[gx271@login-2-1 NYU-RBDA-17fall-Movie]$ hdfs dfs -ls hiveInput
+Found 1 items
+-rw-------   3 gx271 users    5698602 2017-11-04 22:49 hiveInput/tmdb_5000_movies.csv
+[gx271@login-2-1 NYU-RBDA-17fall-Movie]$ beeline
+Beeline version 1.1.0-cdh5.11.1 by Apache Hive
+beeline> !connect jdbc:hive2://babar.es.its.nyu.edu:10000/
+scan complete in 2ms
+Connecting to jdbc:hive2://babar.es.its.nyu.edu:10000/
+Enter username for jdbc:hive2://babar.es.its.nyu.edu:10000/: gx271
+Enter password for jdbc:hive2://babar.es.its.nyu.edu:10000/: reuglus@091526
+Enter password for jdbc:hive2://babar.es.its.nyu.edu:10000/: Connected to: Apache Hive (version 1.1.0-cdh5.11.1)
+Driver: Hive JDBC (version 1.1.0-cdh5.11.1)
+Transaction isolation: TRANSACTION_REPEATABLE_READ
+0: jdbc:hive2://babar.es.its.nyu.edu:10000/> use gx271;
+INFO  : Compiling command(queryId=hive_20171104231717_901c004f-631e-43c3-8ae2-a600e80f6365): use gx271
+INFO  : Semantic Analysis Completed
+INFO  : Returning Hive schema: Schema(fieldSchemas:null, properties:null)
+INFO  : Completed compiling command(queryId=hive_20171104231717_901c004f-631e-43c3-8ae2-a600e80f6365); Time taken: 0.008 seconds
+INFO  : Executing command(queryId=hive_20171104231717_901c004f-631e-43c3-8ae2-a600e80f6365): use gx271
+INFO  : Starting task [Stage-0:DDL] in serial mode
+INFO  : Completed executing command(queryId=hive_20171104231717_901c004f-631e-43c3-8ae2-a600e80f6365); Time taken: 0.006 seconds
+INFO  : OK
+No rows affected (0.065 seconds)
+0: jdbc:hive2://babar.es.its.nyu.edu:10000/> show tables;
+INFO  : Compiling command(queryId=hive_20171104231717_4e9322ae-6190-40a5-9674-3b204944b1b0): show tables
+INFO  : Semantic Analysis Completed
+INFO  : Returning Hive schema: Schema(fieldSchemas:[FieldSchema(name:tab_name, type:string, comment:from deserializer)], properties:null)
+INFO  : Completed compiling command(queryId=hive_20171104231717_4e9322ae-6190-40a5-9674-3b204944b1b0); Time taken: 0.003 seconds
+INFO  : Executing command(queryId=hive_20171104231717_4e9322ae-6190-40a5-9674-3b204944b1b0): show tables
+INFO  : Starting task [Stage-0:DDL] in serial mode
+INFO  : Completed executing command(queryId=hive_20171104231717_4e9322ae-6190-40a5-9674-3b204944b1b0); Time taken: 0.005 seconds
+INFO  : OK
++-----------+--+
+| tab_name  |
++-----------+--+
++-----------+--+
+No rows selected (0.049 seconds)
+0: jdbc:hive2://babar.es.its.nyu.edu:10000/> create external table movie_metadata (budget int, genres string, homepage string, id int, keywords string, original_language string, original_title string, overview string, popularity double, production_companies string, release_date string, revenue bigint, runtime smallint, spoken_language string, status string, tagline string, title string, vote_average double, vote_count int) row format delimited fields terminated by ',' location '/user/gx271/hiveInput/';
+INFO  : Compiling command(queryId=hive_20171104231717_005986bb-1a19-4894-ac95-e1b7ddb54a8c): create external table movie_metadata (budget int, genres string, homepage string, id int, keywords string, original_language string, original_title string, overview string, popularity double, production_companies string, release_date string, revenue bigint, runtime smallint, spoken_language string, status string, tagline string, title string, vote_average double, vote_count int) row format delimited fields terminated by ',' location '/user/gx271/hiveInput/'
+INFO  : Semantic Analysis Completed
+INFO  : Returning Hive schema: Schema(fieldSchemas:null, properties:null)
+INFO  : Completed compiling command(queryId=hive_20171104231717_005986bb-1a19-4894-ac95-e1b7ddb54a8c); Time taken: 0.005 seconds
+INFO  : Executing command(queryId=hive_20171104231717_005986bb-1a19-4894-ac95-e1b7ddb54a8c): create external table movie_metadata (budget int, genres string, homepage string, id int, keywords string, original_language string, original_title string, overview string, popularity double, production_companies string, release_date string, revenue bigint, runtime smallint, spoken_language string, status string, tagline string, title string, vote_average double, vote_count int) row format delimited fields terminated by ',' location '/user/gx271/hiveInput/'
+INFO  : Starting task [Stage-0:DDL] in serial mode
+INFO  : Completed executing command(queryId=hive_20171104231717_005986bb-1a19-4894-ac95-e1b7ddb54a8c); Time taken: 0.041 seconds
+INFO  : OK
+No rows affected (0.105 seconds)
+0: jdbc:hive2://babar.es.its.nyu.edu:10000/> show tables;
+INFO  : Compiling command(queryId=hive_20171104231717_7f4d04e0-a5b6-4422-a4d5-8fd373fe73f2): show tables
+INFO  : Semantic Analysis Completed
+INFO  : Returning Hive schema: Schema(fieldSchemas:[FieldSchema(name:tab_name, type:string, comment:from deserializer)], properties:null)
+INFO  : Completed compiling command(queryId=hive_20171104231717_7f4d04e0-a5b6-4422-a4d5-8fd373fe73f2); Time taken: 0.003 seconds
+INFO  : Executing command(queryId=hive_20171104231717_7f4d04e0-a5b6-4422-a4d5-8fd373fe73f2): show tables
+INFO  : Starting task [Stage-0:DDL] in serial mode
+INFO  : Completed executing command(queryId=hive_20171104231717_7f4d04e0-a5b6-4422-a4d5-8fd373fe73f2); Time taken: 0.004 seconds
+INFO  : OK
++-----------------+--+
+|    tab_name     |
++-----------------+--+
+| movie_metadata  |
++-----------------+--+
+1 row selected (0.021 seconds)
+0: jdbc:hive2://babar.es.its.nyu.edu:10000/> select * from movie_metadata limit 6;
+INFO  : Compiling command(queryId=hive_20171104231818_cb17dd50-47c5-4caa-9e9b-d289944fb350): select * from movie_metadata limit 6
+INFO  : Semantic Analysis Completed
+INFO  : Returning Hive schema: Schema(fieldSchemas:[FieldSchema(name:movie_metadata.budget, type:int, comment:null), FieldSchema(name:movie_metadata.genres, type:string, comment:null), FieldSchema(name:movie_metadata.homepage, type:string, comment:null), FieldSchema(name:movie_metadata.id, type:int, comment:null), FieldSchema(name:movie_metadata.keywords, type:string, comment:null), FieldSchema(name:movie_metadata.original_language, type:string, comment:null), FieldSchema(name:movie_metadata.original_title, type:string, comment:null), FieldSchema(name:movie_metadata.overview, type:string, comment:null), FieldSchema(name:movie_metadata.popularity, type:double, comment:null), FieldSchema(name:movie_metadata.production_companies, type:string, comment:null), FieldSchema(name:movie_metadata.release_date, type:string, comment:null), FieldSchema(name:movie_metadata.revenue, type:bigint, comment:null), FieldSchema(name:movie_metadata.runtime, type:smallint, comment:null), FieldSchema(name:movie_metadata.spoken_language, type:string, comment:null), FieldSchema(name:movie_metadata.status, type:string, comment:null), FieldSchema(name:movie_metadata.tagline, type:string, comment:null), FieldSchema(name:movie_metadata.title, type:string, comment:null), FieldSchema(name:movie_metadata.vote_average, type:double, comment:null), FieldSchema(name:movie_metadata.vote_count, type:int, comment:null)], properties:null)
+INFO  : Completed compiling command(queryId=hive_20171104231818_cb17dd50-47c5-4caa-9e9b-d289944fb350); Time taken: 0.175 seconds
+INFO  : Executing command(queryId=hive_20171104231818_cb17dd50-47c5-4caa-9e9b-d289944fb350): select * from movie_metadata limit 6
+INFO  : Completed executing command(queryId=hive_20171104231818_cb17dd50-47c5-4caa-9e9b-d289944fb350); Time taken: 0.005 seconds
+INFO  : OK
++------------------------+------------------------+----------------------------+--------------------+----------------------------+-----------------------------------+------------------------------------+-----------------------------------------------+----------------------------+--------------------------------------+---------------------------------+-------------------------+-------------------------+---------------------------------+--------------------------------+-------------------------+---------------------------------------------+------------------------------+----------------------------+--+
+| movie_metadata.budget  | movie_metadata.genres  |  movie_metadata.homepage   | movie_metadata.id  |  movie_metadata.keywords   | movie_metadata.original_language  |   movie_metadata.original_title    |            movie_metadata.overview            | movie_metadata.popularity  | movie_metadata.production_companies  |   movie_metadata.release_date   | movie_metadata.revenue  | movie_metadata.runtime  | movie_metadata.spoken_language  |     movie_metadata.status      | movie_metadata.tagline  |            movie_metadata.title             | movie_metadata.vote_average  | movie_metadata.vote_count  |
++------------------------+------------------------+----------------------------+--------------------+----------------------------+-----------------------------------+------------------------------------+-----------------------------------------------+----------------------------+--------------------------------------+---------------------------------+-------------------------+-------------------------+---------------------------------+--------------------------------+-------------------------+---------------------------------------------+------------------------------+----------------------------+--+
+| NULL                   | genres                 | homepage                   | NULL               | keywords                   | original_language                 | original_title                     | overview                                      | NULL                       | production_companies                 | production_countries            | NULL                    | NULL                    | runtime                         | spoken_languages               | status                  | tagline                                     | NULL                         | NULL                       |
+| 237000000              | "[{""id"": 28          |  ""name"": ""Action""}     | NULL               |  ""name"": ""Adventure""}  |  {""id"": 14                      |  ""name"": ""Fantasy""}            |  {""id"": 878                                 | NULL                       | http://www.avatarmovie.com/          | 19995                           | NULL                    | NULL                    |  {""id"": 2964                  |  ""name"": ""future""}         |  {""id"": 3386          |  ""name"": ""space war""}                   | NULL                         | NULL                       |
+| 300000000              | "[{""id"": 12          |  ""name"": ""Adventure""}  | NULL               |  ""name"": ""Fantasy""}    |  {""id"": 28                      |  ""name"": ""Action""}]"           | http://disney.go.com/disneypictures/pirates/  | 285.0                      | "[{""id"": 270                       |  ""name"": ""ocean""}           | NULL                    | NULL                    |  {""id"": 911                   |  ""name"": ""exotic island""}  |  {""id"": 1319          |  ""name"": ""east india trading company""}  | NULL                         | NULL                       |
+| 245000000              | "[{""id"": 28          |  ""name"": ""Action""}     | NULL               |  ""name"": ""Adventure""}  |  {""id"": 80                      |  ""name"": ""Crime""}]"            | http://www.sonypictures.com/movies/spectre/   | 206647.0                   | "[{""id"": 470                       |  ""name"": ""spy""}             | NULL                    | NULL                    |  {""id"": 4289                  |  ""name"": ""secret agent""}   |  {""id"": 9663          |  ""name"": ""sequel""}                      | NULL                         | NULL                       |
+| 250000000              | "[{""id"": 28          |  ""name"": ""Action""}     | NULL               |  ""name"": ""Crime""}      |  {""id"": 18                      |  ""name"": ""Drama""}              |  {""id"": 53                                  | NULL                       | http://www.thedarkknightrises.com/   | 49026                           | NULL                    | NULL                    |  {""id"": 853                   |  ""name"": ""crime fighter""}  |  {""id"": 949           |  ""name"": ""terrorist""}                   | NULL                         | NULL                       |
+| 260000000              | "[{""id"": 28          |  ""name"": ""Action""}     | NULL               |  ""name"": ""Adventure""}  |  {""id"": 878                     |  ""name"": ""Science Fiction""}]"  | http://movies.disney.com/john-carter          | 49529.0                    | "[{""id"": 818                       |  ""name"": ""based on novel""}  | NULL                    | NULL                    |  {""id"": 1456                  |  ""name"": ""medallion""}      |  {""id"": 3801          |  ""name"": ""space travel""}                | NULL                         | NULL                       |
++------------------------+------------------------+----------------------------+--------------------+----------------------------+-----------------------------------+------------------------------------+-----------------------------------------------+----------------------------+--------------------------------------+---------------------------------+-------------------------+-------------------------+---------------------------------+--------------------------------+-------------------------+---------------------------------------------+------------------------------+----------------------------+--+
+6 rows selected (0.3 seconds)
+0: jdbc:hive2://babar.es.its.nyu.edu:10000/> !quit
+Closing: 0: jdbc:hive2://babar.es.its.nyu.edu:10000/
+[gx271@login-2-1 NYU-RBDA-17fall-Movie]$ 
