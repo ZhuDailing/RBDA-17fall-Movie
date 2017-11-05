@@ -7,7 +7,7 @@ beeline> !connect jdbc:hive2://babar.es.its.nyu.edu:10000/
 scan complete in 2ms
 Connecting to jdbc:hive2://babar.es.its.nyu.edu:10000/
 Enter username for jdbc:hive2://babar.es.its.nyu.edu:10000/: gx271
-Enter password for jdbc:hive2://babar.es.its.nyu.edu:10000/: reuglus@091526
+Enter password for jdbc:hive2://babar.es.its.nyu.edu:10000/: **************
 Enter password for jdbc:hive2://babar.es.its.nyu.edu:10000/: Connected to: Apache Hive (version 1.1.0-cdh5.11.1)
 Driver: Hive JDBC (version 1.1.0-cdh5.11.1)
 Transaction isolation: TRANSACTION_REPEATABLE_READ
