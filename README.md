@@ -9,6 +9,19 @@ Data source: [Kaggle TMDB 5000](https://www.kaggle.com/tmdb/tmdb-movie-metadata/
 
 **Apache Maven** 3.2.1
 
+---
+
+# Load data to HDFS
+
+```language=bash
+hdfs dfs -mkdir hiveInput
+hdfs dfs -mv tmdb_5000_movies.csv hiveInput
+```
+
+---
+
+## Run random forest regression
+
 To create the Maven project package: 
 > mvn archetype:generate 
 
