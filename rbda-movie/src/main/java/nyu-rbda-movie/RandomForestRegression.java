@@ -37,20 +37,24 @@ import org.apache.spark.SparkConf;
 public class RandomForestRegression {
     public static void main(String[] args) {
         // $example on$
+	//run in self-contained mode
         SparkConf sparkConf = new SparkConf().setAppName("JavaRandomForestRegressionExample").setMaster("local[*]");
         JavaSparkContext jsc = new JavaSparkContext(sparkConf);
+	    
         // Load and parse the data file.
-        String datapath = "./input/sample_libsvm_data.txt";
+        String datapath = "./input/tmdb_5000_movies.txt";
+	    
         JavaRDD<LabeledPoint> data = MLUtils.loadLibSVMFile(jsc.sc(), datapath).toJavaRDD();
-        // Split the data into training and test sets (30% held out for testing)
-        JavaRDD<LabeledPoint>[] splits = data.randomSplit(new double[]{0.7, 0.3});
+	    
+        // Split the data into training and test sets (20% held out for testing)
+        JavaRDD<LabeledPoint>[] splits = data.randomSplit(new double[]{0.8, 0.2});
         JavaRDD<LabeledPoint> trainingData = splits[0];
         JavaRDD<LabeledPoint> testData = splits[1];
 
         // Set parameters.
         // Empty categoricalFeaturesInfo indicates all features are continuous.
         Map<Integer, Integer> categoricalFeaturesInfo = new HashMap<>();
-        int numTrees = 3; // Use more in practice.
+        int numTrees = 1000; // Use more in practice.
         String featureSubsetStrategy = "auto"; // Let the algorithm choose.
         String impurity = "variance";
         int maxDepth = 4;
